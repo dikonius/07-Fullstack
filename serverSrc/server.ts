@@ -87,11 +87,12 @@ app.put('/api/movies/:id', (req: Request<IdParam, any, MovieWithoutId>, res: Res
   // 4. genomför ändringen
 
   const id: string = req.params.id
-  if( !id ) {
+  // Eftersom vi denna gången inte har några valideringsregler för id, behöver vi inte testa den.
+  /*if( !id ) {
     // Bad request
     res.status(400).send({ success: false, error: 'Bad value for id.' })
     return
-  }
+  }*/
 
   const movie: MovieWithoutId = req.body
   let result: ZodSafeParseResult<MovieWithoutId> = MovieWithoutIdSchema.safeParse(movie)
